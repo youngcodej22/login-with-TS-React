@@ -26,9 +26,15 @@ const login = async (
     : null;
 };
 
-const getUserInfo = async (token: string): Promise<{ username: string } | null> => {
+const getUserInfo = async (token: string): Promise<UserInfo | null> => {
   // TODO: login 함수에서 받은 token을 이용해 사용자 정보를 받아오세요.
-  return null;
+  const parsedToken = JSON.parse(token);
+  if (!parsedToken?.secret || parsedToken.secret !== _secret) return null;
+
+  const loggedUser: User | undefined = users.find((user: User) => {
+    if (user.userInfo.name === parsedToken.user.name) return user;
+  });
+  return loggedUser ? loggedUser.userInfo : null;
 };
 
 const LoginWithMockAPI = () => {
@@ -59,10 +65,13 @@ const LoginWithMockAPI = () => {
     }
 
     const loginRes = await login(idVal, passwordVal);
-    if (!loginRes) return;
+    if (!loginRes)
+      return alert(
+        "ID또는 Password를 잘못 입력하셨습니다. 없는 User입니다. 로그인 실패."
+      );
 
     const userInfo = await getUserInfo(loginRes.token);
-    if (!userInfo) return;
+    if (!userInfo) return alert("User 정보를 토큰을 가져오는데 실패.");
 
     setUserInfo(userInfo);
   };
