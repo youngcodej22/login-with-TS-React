@@ -1,12 +1,4 @@
-export interface UserInfo {
-  name: string;
-}
-
-export interface User {
-  username: string;
-  password: string;
-  userInfo: UserInfo;
-}
+import { User } from "../types/user";
 
 export const users: User[] = [
   {
