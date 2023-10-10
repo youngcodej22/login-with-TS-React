@@ -1,11 +1,30 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import LoginWithMockAPI from "./pages/LoginWithMockAPI";
+// * 초기 Login 연습
+import LoginWithMockAPI from "./pages/01_basic/LoginWithMockAPI";
+
+// * JWT, localstorage
+import JWTLogin from "./pages/02_jwt/JWTLogin";
+import JWTLoginWithLocalStorage from "./pages/03_localstorage/JWTLoginWithLocalStorage";
+import AutoLogin from "./pages/03_localstorage/AutoLogin";
+
 import "./App.css";
 
 const router = createBrowserRouter([
+  // {
+  //   path: "/",
+  //   element: <LoginWithMockAPI />,
+  // },
   {
     path: "/",
-    element: <LoginWithMockAPI />,
+    element: <JWTLogin />,
+  },
+  {
+    path: "/local-storage",
+    element: <JWTLoginWithLocalStorage />,
+  },
+  {
+    path: "/other-page",
+    element: <AutoLogin />,
   },
 ]);
 
