@@ -1,64 +1,85 @@
-# login-with-TS-React
+# Login 기능 구현
 
-> Typescript와 React를 사용하여 Login 기능을 차근 차근 구현해보자!
+## Installation / Execution
 
-## 1. 프로젝트 사용 package
+- Server (dir: server)
 
-## 2. 실행 방법
+```bash
+  $ yarn && yarn server
+```
+
+- Client (dir: client)
 
 ```bash
   $ yarn && yarn dev
 ```
 
-## 3. 자가 Q&A
+- 통합 (dir: server)
 
-1. `useState`를 쓸 것인가? `useRef`를 쓸 것 인가?
+```bash
+  $ yarn dev
+```
 
-- useRef를 사용하여 React의 입력 요소 값에 액세스할 수 있지만, useRef는 일반적으로 입력 필드에 초점을 맞추거나 입력 요소의 속성에 액세스하는 등 DOM과 직접 상호 작용해야 할 때 사용된다는 점을 이해하는 것이 중요합니다. 구성 요소 상태 내에서 입력 값을 캡처하고 관리하려는 경우 이전 예제에 표시된 것처럼 useState를 사용하는 것이 더 일반적이며 권장됩니다.
+<br />
 
----
+## Frontend
 
-### 참고 자료
+### Tech Stack
 
-- [MDN-FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
-- [mock API](https://mockapi.io/)
-- [호출할만한 api](https://64f732e69d775408495348ae.mockapi.io/api/v1/authmock)
+![React](https://img.shields.io/badge/react-00cbff?style=for-the-badge&logo=react&logoColor=white) **v18.2.0** &nbsp;&nbsp;
+![Typescript](https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) **v4.9.3** &nbsp;&nbsp;
+![Vite](https://img.shields.io/badge/vite-8E6EFE?style=for-the-badge&logo=vite&logoColor=white) **v4.1.0**
 
----
+- **[axios](https://www.npmjs.com/package/bcrypt) :** A bcrypt library for NodeJS. / 문자를 암호화하기 위해 hash(다지다)해주는 역할
+- **[localforage](https://www.npmjs.com/package/cookie-parser) :** Parse HTTP request cookies / cookie를 request하거나 또는 response 시에 설정 할 수 있고 편리하게 사용하는 미들웨어
+- **[match-sorter](https://www.npmjs.com/package/cookie-parser) :** Parse HTTP request cookies / cookie를 request하거나 또는 response 시에 설정 할 수 있고 편리하게 사용하는 미들웨어
+- **[react-icons](https://www.npmjs.com/package/cookie-parser) :** Parse HTTP request cookies / cookie를 request하거나 또는 response 시에 설정 할 수 있고 편리하게 사용하는 미들웨어
+- **[sort-by](https://www.npmjs.com/package/cookie-parser) :** Parse HTTP request cookies / cookie를 request하거나 또는 response 시에 설정 할 수 있고 편리하게 사용하는 미들웨어
 
-## 일지
+<br />
 
-#### 1. 초기 아주 간단한 로그인 기능 구현.
+### Issue
 
-- 원티드 프리온보딩 로그인 수업에 참여하였고 사전 과제로 로그인 기능을 구현하였다.
-  `useRef`를 통해서 `input`에 접근하여 `form` data를 가져오는 것이 일반적인 줄 알았지만 수업에서 `new FormData` API를 통하여 `entries()`를 통해 `key, value`를 가져오는 형태를 사용하였다. 예전에 봤었지만 잊고 있던 방식이었고 다시 한번 공부하는 계기가 되었다. 또한 수업 시간 답에서는 `formData.get("username") as string,`으로 id와 password를 따로따로 가져오는 방식도 사용하였다.
-- Typescript가 익숙하지 않지만 `type`과 `interface`의 사용방식도 느끼게 되었다. `type`은 말그대로 type을 정의할 때 사용하고 interface는 정의해야할 타입들을 구조적으로(객체느낌) 정의할 때 사용하는 틀과 같다고 느꼈다. 이부분에 대해서는 좀 더 다른 분들의 코드를 찾아보면서 공부해봐야 할 것 같다.
+1. example
 
-#### 2. JWT를 활용
+- 원인 : example
+- 해결 : example
+- 참고
+  - [example](https://react.dev)
 
-JWT를 공부하면서 Token 방식이 가지는 장점(stateless 인증방식)과 단점을 알게 되었다. 그렇기 때문에 서비스 성격에 따라 token방식이 될 수도 또는 세션과 같이 다른 방식이 될 수도 있다. 이는 백엔드개발자와의 협업을 통해 논의를 하고 결정할 수 있는 부분될 것이다. 아래는 실습하면서 다시 한번 상기시키기 위해 정리한 내용들이다.
+<br />
 
-###### 👉 흐름
+## Backend
 
-1. 유저의 ID/PW를 입력 후 Server에 Request를 하고 인증(authentication)
-2. Response: JWT(JsonWebToken)를 Response(accessToken, refreshToken) 받는다.
-3. Token을 통해 권한부여(authorization)을 받고 AutoLogin페이지로 이동할 수 있다.
-4. 메모리(변수,state 등)에 저장된 accessToken으로 Request
-5. accessToken이 만료가 되었다면
-6. refreshToken으로 accessToken을 Re-Request
-7. 메모리에 저장된 Re-Request한 accessToken을 Header에 담아 정보 Request
+### Tech Stack
 
-###### 👉 중요
+![Node.js](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) **v18.15.0** &nbsp;&nbsp;
+![NPM](https://img.shields.io/badge/NPM-C52424?style=for-the-badge&logo=NPM&logoColor=white) **v9.5.0**
 
-1. JWT처럼 token 방식이 혹여나 탈취당하여 decode(복호화)되는 경우에 유저의 정보가 노출될 수 있다. 그렇기 때문에 JWT payload 부분을 유의하자.
-2. 기본적으로 XSS, CSRF 공격에 대비할 수 있도록 해야한다.
+- **[bcrypt](https://www.npmjs.com/package/bcrypt) :** A bcrypt library for NodeJS. / 문자를 암호화하기 위해 hash(다지다)해주는 역할
+- **[cookie-parser](https://www.npmjs.com/package/cookie-parser) :** Parse HTTP request cookies / cookie를 request하거나 또는 response 시에 설정 할 수 있고 편리하게 사용하는 미들웨어
+- **[cors](https://www.npmjs.com/package/cors) :** Node.js CORS middleware / Cross-Origin-Resource-Sharing을 http header를 통해 허가하거나 거절하는 것을 설정
+- **[dotenv](https://reactnative.dev/) :** Loads environment variables from .env file / .env라는 환경설정 파일과 연결하여 저장된 변수를 사용
+- **[express](https://www.npmjs.com/package/express) :** Fast, unopinionated, minimalist web framework / 미니멀리스트 Node.js Framework
+- **[express-async-handler](https://www.npmjs.com/package/express-async-handler) :** Express Error Handler for Async Functions / 비동기 함수를 에러 핸들러이며 메인 코드에서 try~catch를 생략할 수 있게 해준다.
+- **[express-rate-limit](https://www.npmjs.com/package/express-rate-limit) :** Basic IP rate-limiting middleware for Express. Use to limit repeated requests to public APIs and/or endpoints such as password reset. / 반복되는 request에 대한 제한 설정을 할 수 있다. 예를 들어 '로그인'에 경우.
+- **[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) :** JSON Web Token implementation (symmetric and asymmetric) / json 베이스인 데이터(유저정보)를 암호화(HS256)해서 token으로 만든다.
+- **[mongoose](https://www.npmjs.com/package/mongoose) :** MongoDB ODM(Object Data Modeling) / Object와 MongoDB의 데이터를 Mapping하여 호환성을 만들어내고, 간편한 CRUD를 가능하게 한다.
+- **[mongoose-sequence](https://reactnative.dev/) :** Very generic autoincrement plugin for mongoose / mongoose에서 autoincrement를 편리하게 할 수 있는 library다.
+- **[uuid](https://www.npmjs.com/package/uuid) :** RFC4122 (v1, v4, and v5) UUIDs / 고유 식별자를 만들어 내는 library다.
+- **[concurrently](https://www.npmjs.com/package/concurrently) :** Run commands concurrently / frontend, backend에 대한 script를 동시에 실행 시킬 수 있도록 도와준다.
 
-- 만약 `LocalStorage`에 token을 저장한다면 XSS 공격으로 부터 굉장히 위험할 것이다.
-- **RefreshToken**는 accessToken을 재발급하는 용도로만 사용된다.
-- User 로그인 시 RefreshToken은 HTTPOnly Cookie(**Set 설정은 서버에서 정한다**)로 발급(JS로 접근 불가) / 이때, AccessToken은 메모리에 발급(**변수, state 등에 저장**)(짧은 유효기간, 브라우저 Heap메모리는 해킹 당할 수가 없다.) 따로 해도 상관없지만 주로 2개를 같이 받는다.
-- 이후, User가 페이지를 돌아다니려고 Request 시에 AccessToken이 만료되었다면 Refresh Token으로 새로운 AccessToken을 발급 받고 다시 로그인한 상태로 페이지를 돌아다닐 수 있다. (AccessToken이 클라이언트에서 만료가 되었거나 날라갔을 때, 클라이언트 HTTPOnly Cookie에 남아있는 RefreshToken으로 재발급, **새로고침 할 때 마다 refreshToken으로 요청해야함**)
-- API호출 시에는 보통 토큰 유효한지 체크 / 토큰 정보 받아오는 api 2개가 필요
+<br />
 
-###### 👉 기타
+### Issue
 
-1. accessToken과 refreshToken의 만료 기한은 서비스 성격에 다르다. 예시로 30분/하루가 될 수도 있다.
+1. mongoose-sequence, API 테스트 request 시 무한 로딩.
+
+- 원인 : 기존 mongoose v.5 or 6은 이상이 없으나 v.7부터 'mongoose-sequence'의 코드 문제 발생.
+- 해결 : mongoose v.7 사용을 유지하고 mongoose-sequence 코드를 수정.
+- 참고
+  - [해당 Issue](https://github.com/ramiel/mongoose-sequence/issues/133)
+  - [Promise를 위한 mongoose-sequence 코드 변경 PR](https://github.com/ramiel/mongoose-sequence/pull/136/commits/9bd05cf578311d83ce70d96097559526f1242f47)
+  - [mongoose v.7을 위한 repository](https://github.com/amansingh63/mongoose-sequence)
+
+<br />
