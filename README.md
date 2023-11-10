@@ -73,4 +73,4 @@
 
 ### Issue
 
-1. [mongoose-sequence, API 테스트 request 시 무한 로딩]()
+1. [mongoose-sequence, API 테스트 request 시 무한 로딩](https://github.com/youngcodej22/login-with-TS-React/blob/main/docs/backend/01_mongoose-sequence-conflict.md)
