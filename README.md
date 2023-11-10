@@ -40,12 +40,7 @@
 
 ### Issue
 
-1. example
-
-- 원인 : example
-- 해결 : example
-- 참고
-  - [example](https://react.dev)
+1. [브라우저에서 CORS 일시적 해결법](https://github.com/youngcodej22/login-with-TS-React/blob/main/docs/frontend/01_cors.md)
 
 <br />
 
@@ -74,5 +69,3 @@
 ### Issue
 
 1. [mongoose-sequence, API 테스트 request 시 무한 로딩](https://github.com/youngcodej22/login-with-TS-React/blob/main/docs/backend/01_mongoose-sequence-conflict.md)
-
-2. [브라우저에서 CORS 일시적 해결법](https://github.com/youngcodej22/login-with-TS-React/blob/main/docs/frontend/01_cors.md)
