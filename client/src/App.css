@@ -1,9 +1,22 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  font-family: "Nunito", sans-serif;
+  font-size: 10px;
+  color: #fff;
+}
+
+body {
+  min-height: 100vh;
+  background-color: dodgerblue;
+}
+
 input {
-  font-size: 1.5em;
+  font-size: 3em;
   padding: 0.25em;
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -12,7 +25,7 @@ input {
 }
 
 button {
-  font-size: 1.5em;
+  font-size: 3em;
   padding: 0.5em;
   background-color: #ccc;
   color: #ffffff;
@@ -21,13 +34,19 @@ button {
 }
 
 .content {
-  margin: 0 auto;
+  /* margin: 0 auto;
   max-width: 640px;
-  padding: 80px 20px;
+  padding: 80px 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
 }
 
 .label {
-  font-size: 1.5em;
+  font-size: 3em;
   padding: 0.5em;
   width: 100%;
 }
