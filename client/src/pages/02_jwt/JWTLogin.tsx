@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { getCurrentUserInfoWithToken, loginWithToken } from "../../api/login";
+import { getCurrentUserInfo, loginWithToken } from "../../api/login_axios";
+import { useRouter } from "../../hooks/useRouter";
 import { UserInfo } from "../../types/user";
 
 const JWTLogin = () => {
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+  // const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
+  const { routeTo } = useRouter();
 
   const loginSubmitHandler = async (
     event: React.FormEvent<HTMLFormElement>
@@ -22,18 +24,20 @@ const JWTLogin = () => {
 
     // 로그인 실패시 함수를 종료합니다.
     // 로그인 성공시, getCurrentUserInfoWithToken 함수를 호출하여 userInfo를 가져옵니다.
-    if (loginResult.result === "fail") return;
+    if (loginResult?.result === "fail") {
+      alert(loginResult.message);
+      return;
+    }
 
-    // TODO: 유저 정보 가져오기 (getCurrentUserInfoWithToken 함수 사용)
-    // 유저 정보 가져오기 실패시 함수를 종료합니다.
-    // 유저 정보 가져오기 성공시, userInfo 상태를 업데이트합니다.
-    const userInfo = await getCurrentUserInfoWithToken(
-      loginResult.access_token
-    );
+    // // TODO: 유저 정보 가져오기 (getCurrentUserInfoWithToken 함수 사용)
+    // const userInfo = await getCurrentUserInfoWithToken(
+    //   loginResult.access_token
+    // );
+    // const userInfo = await getCurrentUserInfo();
 
-    if (userInfo === null) return;
+    // setUserInfo(userInfo);
 
-    setUserInfo(userInfo);
+    routeTo("/profile");
   };
 
   return (
@@ -52,10 +56,6 @@ const JWTLogin = () => {
           submit
         </button>
       </form>
-      <div>
-        <h2>User info</h2>
-        {JSON.stringify(userInfo)}
-      </div>
     </div>
   );
 };

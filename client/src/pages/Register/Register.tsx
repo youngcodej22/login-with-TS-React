@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import axios from "../../api/login_axios";
+// import axios from "../../api/login_axios";
+import { axiosClient } from "../../api/axiosClient";
 import { FaCheck, FaTimes, FaInfoCircle } from "react-icons/fa";
 import "./Register.css";
 
@@ -74,7 +75,8 @@ const Register = () => {
       return;
     }
     try {
-      const response = await axios.post(
+      // const response = await axios.post(
+      const response = await axiosClient.post(
         REGISTER_URL,
         JSON.stringify({ username, password, roles }),
         {
@@ -82,11 +84,6 @@ const Register = () => {
           withCredentials: true,
         }
       );
-      console.log("response", response);
-
-      // console.log(response?.data);
-      // console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
       setSuccess(true);
       //clear state and controlled inputs
       //need value attrib on inputs for this
