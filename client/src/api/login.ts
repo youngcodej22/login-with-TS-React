@@ -84,7 +84,7 @@ export const getCurrentUserInfoWithToken = async (
   // API Spec은 강의 자료를 참고하세요.
   // 유저 정보 조회에 성공한 경우에는 UserInfo 타입의 값을 반환하세요.
 
-  const userInfoRes = await fetch(`${BASE_URL}/profile`, {
+  const userInfoRes = await fetch(`${BASE_URL}/users/profile`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
