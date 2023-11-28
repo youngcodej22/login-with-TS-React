@@ -2,6 +2,7 @@ const User = require("../models/User");
 const Note = require("../models/Note");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // * @desc Get all users
 // * @route GET /users
@@ -16,6 +17,36 @@ const getAllUsers = asyncHandler(async (req, res) => {
   }
 
   res.json(users);
+});
+
+// * @desc Get specific a user
+// * @route GET /users/profile
+// * @access Private
+const getUserProfile = asyncHandler(async (req, res) => {
+  // const getUserProfile = (req, res) => {
+  const authHeader = req.headers["authorization"];
+
+  if (authHeader) {
+    // Authorization header exists, you can process it here
+    // For example, if using Bearer token authentication (JWT)
+    const token = authHeader.split(" ")[1]; // Assuming 'Bearer' is used, get the token part
+
+    // ... Validate and authenticate the token, perform necessary actions ...
+    // ! 로컬스토리지 이후 여기서 받은 토큰 같다.
+    // ! token안에 username, roles에 대한 정보가 있어서 토큰비교로 증명하고 거기서 decoded된 값을 받아와서 response
+    const tokenResult = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+    const { username, roles } = tokenResult["UserInfo"];
+
+    const role = roles[0];
+
+    res.json({ username, role });
+
+    // res.status(200).send("Authorized"); // Send a response indicating authorization
+  } else {
+    // No Authorization header present
+    res.status(401).send("Unauthorized");
+  }
 });
 
 // * @desc Create new user
@@ -133,6 +164,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 module.exports = {
   getAllUsers,
+  getUserProfile,
   createNewUser,
   updateUser,
   deleteUser,

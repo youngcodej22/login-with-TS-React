@@ -54,6 +54,25 @@ const login = asyncHandler(async (req, res) => {
   res.json({ accessToken });
 });
 
+// @desc Profile
+// @route GET /auth/profile
+// @access Private
+// const profile = (req, res) => {
+//   const receivedToken = req.headers.authorization.split(" ")[1];
+//   console.log("receivedToken: ", receivedToken);
+
+//   try {
+//     const decodedToken = jwt.verify(
+//       receivedToken,
+//       process.env.ACCESS_TOKEN_SECRET
+//     );
+
+//     console.log("decoded: ", decodedToken);
+//   } catch (error) {
+//     console.error("Invalid token: ", error);
+//   }
+// };
+
 // @desc Refresh
 // @route GET /auth/refresh
 // @access Public - because access token has expired
@@ -107,6 +126,7 @@ const logout = (req, res) => {
 
 module.exports = {
   login,
+  // profile,
   refresh,
   logout,
 };
