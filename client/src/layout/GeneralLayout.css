@@ -1,0 +1,16 @@
+.non-logged-in-body {
+  margin: 0 auto;
+  width: 480px;
+  padding: 80px 20px;
+}
+
+.general-layout {
+  height: 100vh;
+  display: flex;
+}
+
+.general-layout__body {
+  margin: 0 auto;
+  width: 640px;
+  padding: 80px 20px;
+}
