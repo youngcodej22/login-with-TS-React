@@ -40,7 +40,7 @@ const routerData: RouterElement[] = [
       <Profile
         userProfile={{
           username: "",
-          role: "",
+          role: [""],
         }}
       />
     ),
