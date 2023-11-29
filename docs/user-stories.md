@@ -10,6 +10,7 @@
 6. [x] Profile page를 만들었고 access_token과 데이터 정보를 넘겨줘야한다
 7. [x] backend, userController에서 `getUserProfile`에서 토큰 비교
 8. [ ] front, autoLogin 구현 (token이 있는 것을 바탕)
+9. [ ] test
 
 ## Frontend
 
